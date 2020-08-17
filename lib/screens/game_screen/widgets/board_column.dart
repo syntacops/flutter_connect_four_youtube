@@ -14,7 +14,19 @@ class BoardColumn extends StatelessWidget {
   }) : super(key: key);
 
   List<Cell> _buildBoardColumn() {
-    return columnOfPlayerChips.map((number) => Cell()).toList();
+    return columnOfPlayerChips.reversed
+        .map((number) => number == 1
+            ? Cell(
+                currentCellMode: cellMode.YELLOW,
+              )
+            : number == 2
+                ? Cell(
+                    currentCellMode: cellMode.RED,
+                  )
+                : Cell(
+                    currentCellMode: cellMode.EMPTY,
+                  ))
+        .toList();
   }
 
   @override

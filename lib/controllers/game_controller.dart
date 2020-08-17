@@ -7,7 +7,7 @@ class GameController extends GetxController {
 
   void _buildBoard() {
     board = [
-      List.filled(6, 0),
+      [1, 1, 0, 0, 0, 0],
       List.filled(6, 0),
       List.filled(6, 0),
       List.filled(6, 0),
