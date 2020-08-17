@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_connect_four_youtube/controllers/game_controller.dart';
+import 'package:get/get.dart';
 
 import 'board_column.dart';
 
 class Board extends StatelessWidget {
+  final GameController gameController = Get.find<GameController>();
+
+  List<BoardColumn> _buildBoard() {
+    return gameController.board
+        .map((boardColumn) => BoardColumn(
+              columnOfPlayerChips: boardColumn,
+            ))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,15 +46,7 @@ class Board extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
-                    children: [
-                      BoardColumn(),
-                      BoardColumn(),
-                      BoardColumn(),
-                      BoardColumn(),
-                      BoardColumn(),
-                      BoardColumn(),
-                      BoardColumn(),
-                    ],
+                    children: _buildBoard(),
                   ),
                 ],
               ),
